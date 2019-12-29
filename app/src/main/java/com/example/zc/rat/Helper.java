@@ -38,12 +38,12 @@ public class Helper {
 
         //给媒体信息提取器设置源音频文件路径
         try {
-            mediaExtractor.setDataSource(context.getResources().getAssets().openFd("gu.mp3"));
+            mediaExtractor.setDataSource(context.getResources().getAssets().openFd("aabb.wav"));
         } catch (Exception ex) {
             ex.printStackTrace();
             try {
 //                mediaExtractor.setDataSource(new FileInputStream(musicFileUrl).getFD());
-                mediaExtractor.setDataSource(context.getResources().getAssets().openFd("gu.mp3"));
+                mediaExtractor.setDataSource(context.getResources().getAssets().openFd("aabb.wav"));
             } catch (Exception e) {
                 e.printStackTrace();
                 LogUtil.e("设置解码音频文件路径错误");
