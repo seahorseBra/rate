@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions {
+        noCompress "txt"  //表示不让aapt压缩的文件后缀
+    }
 }
 
 dependencies {

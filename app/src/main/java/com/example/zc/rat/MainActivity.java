@@ -36,61 +36,35 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
 
-        mPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String path = Environment.getExternalStorageDirectory() + "/AArate/hh.wav";
-                reader = new WaveFileReader(path);
-                reader.getFrameLevel(0);
-                freWAVView.setMax(reader.max);
-                if (reader.isSuccess()) {
-                    mWAVView.setData(reader);
-                    play(path);
-                }
-            }
-        });
-        mTrans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String path = Environment.getExternalStorageDirectory() + "/AArate/gu.mp3";
-                String dstPath = Environment.getExternalStorageDirectory() + "/AArate/gu.wav";
-
-            }
-        });
-    }
-
-    private int aa = 0;
-
-    private void play(String path) {
-        audioPlayer = new AudioPlayer();
-        audioPlayer.setTarget(new File(path));
-        audioPlayer.setListener(new AudioPlayer.OnSeekDuration() {
-            @Override
-            public void onSeek(float percent, int curr) {
-                mWAVView.setPercent(percent);
-//                aa++;
-//                if (aa % 10 != 0) {
-//                    return;
+//        mPlay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String path = Environment.getExternalStorageDirectory() + "/AArate/hh.wav";
+//                reader = new WaveFileReader(path);
+//                reader.getFrameLevel(0);
+//                freWAVView.setMax(reader.max);
+//                if (reader.isSuccess()) {
+//                    mWAVView.setData(reader);
+//                    play(path);
 //                }
-//                aa = 0;
+//            }
+//        });
+//        mTrans.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String path = Environment.getExternalStorageDirectory() + "/AArate/gu.mp3";
+//                String dstPath = Environment.getExternalStorageDirectory() + "/AArate/gu.wav";
 //
-//                int frameIndex = (int) (reader.frameFrequnce.length * percent);
-//                Complex[] fr = reader.frameFrequnce[frameIndex];
-//                double[] aa = new double[fr.length];
-//                for (int i = 0; i < fr.length; i++) {
-//                    aa[i] = fr[i].getReal();
-//                }
-//                freWAVView.setData(aa);
-            }
-        });
-        audioPlayer.start();
+//            }
+//        });
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (audioPlayer != null) {
-            audioPlayer.stop();
-        }
+//        if (audioPlayer != null) {
+//            audioPlayer.stop();
+//        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.zc.rat;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.TimedText;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class AudioPlayer {
     private int duration;
     private boolean isPlaying = false;
 
-    private File targetFile;
+    private AssetFileDescriptor targetFile;
     private MediaPlayer mMediaPlayer = null;
     private Consumer<AudioPlayer> mOnCompletionListener;
 
@@ -25,7 +26,7 @@ public class AudioPlayer {
 
     }
 
-    public void setTarget(File file) {
+    public void setTarget(AssetFileDescriptor file) {
         this.targetFile = file;
     }
 
@@ -41,7 +42,7 @@ public class AudioPlayer {
         mMediaPlayer = new MediaPlayer();
 
         try {
-            mMediaPlayer.setDataSource(targetFile.getAbsolutePath());
+            mMediaPlayer.setDataSource(targetFile);
             mMediaPlayer.prepare();
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
