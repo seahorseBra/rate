@@ -109,7 +109,7 @@ public class WaveFileReader {
             if (last == null) {
                 last = new double[frameSize / 2];
                 System.arraycopy(channelData, offset * frameSize, last, 0, last.length);
-                ffTrances(last);
+                last = ffTrances(last);
                 offset++;
                 continue;
             }
@@ -156,7 +156,7 @@ public class WaveFileReader {
         return spectralFlux;
     }
 
-    public static final int THRESHOLD_WINDOW_SIZE = 20;
+    public static final int THRESHOLD_WINDOW_SIZE = 100;
     public static final float MULTIPLIER = 1.5f;
 
     private double[] ffTrances(double[] src) {

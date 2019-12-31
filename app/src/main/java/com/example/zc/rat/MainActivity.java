@@ -1,6 +1,7 @@
 package com.example.zc.rat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mPlay = findViewById(R.id.play);
         mTrans = findViewById(R.id.btn1);
         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
+
+        Intent intent = new Intent(this,TestActivity.class);
+        startActivity(intent);
 
 
         mPlay.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         audioPlayer.setTarget(new File(path));
         audioPlayer.setListener(new AudioPlayer.OnSeekDuration() {
             @Override
-            public void onSeek(float percent) {
+            public void onSeek(float percent, int curr) {
                 mWAVView.setPercent(percent);
 //                aa++;
 //                if (aa % 10 != 0) {

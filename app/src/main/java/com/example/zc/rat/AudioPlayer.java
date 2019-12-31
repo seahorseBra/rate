@@ -172,6 +172,7 @@ public class AudioPlayer {
                     Message message = Message.obtain();
                     Bundle bundle = new Bundle();
                     bundle.putFloat("percent", currentPosition * 1f / duration);
+                    bundle.putInt("currentPosition",currentPosition);
                     message.setData(bundle);
                     handler.sendMessage(message);
                 }
@@ -185,8 +186,9 @@ public class AudioPlayer {
             Bundle data = msg.getData();
             if (data != null) {
                 float percent = data.getFloat("percent");
+                int currentPosition = data.getInt("currentPosition", 0);
                 if (listener != null) {
-                    listener.onSeek(percent);
+                    listener.onSeek(percent, currentPosition);
                 }
             }
             return false;
@@ -199,7 +201,7 @@ public class AudioPlayer {
     }
 
     public interface OnSeekDuration {
-        void onSeek(float percent);
+        void onSeek(float percent,int current);
     }
 
 }
